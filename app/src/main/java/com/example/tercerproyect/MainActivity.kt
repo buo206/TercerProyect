@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tercerproyect.Proyecto.Ejer1
+import com.example.tercerproyect.Proyecto.Ejer2
 import com.example.tercerproyect.ui.theme.TercerProyectTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,7 +36,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Column{
-        Ejer1()
+        //Ejer1()
+        Ejer2()
     }
 }
 
