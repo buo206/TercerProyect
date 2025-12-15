@@ -133,7 +133,7 @@ fun CrearCard(titulo : String , descripcion : String  , url : String , clikable:
 //funcion para crear el botonBar
 @Composable
 fun CrearBottonBar(texto:(String) -> Unit){
-    var index by remember { mutableStateOf(1) }
+    var index by remember { mutableStateOf(2) }
     NavigationBar{
         NavigationBarItem(
             selected = index == 1,
