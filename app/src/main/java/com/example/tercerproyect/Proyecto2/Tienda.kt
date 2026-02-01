@@ -1,10 +1,12 @@
 package com.example.tercerproyect.Proyecto2
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
@@ -29,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,6 +41,7 @@ fun Tienda(modifier: Modifier = Modifier){
     val scope = rememberCoroutineScope()
     var tienda by remember { mutableStateOf(true) }
     var carrito by remember { mutableStateOf(false) }
+    var listaCompras = mutableListOf("")
     Scaffold(
         topBar = {
             TopAppBar(title = {Text("AguadoVents")})
@@ -73,11 +77,21 @@ fun Tienda(modifier: Modifier = Modifier){
                             scope.launch {
                                 estadoSnack.showSnackbar("Añadido al carrito el producto de ${prodcuto.marca} ")
                             }
+                            if(!listaCompras.contains(prodcuto.marca + " " + prodcuto.descripcion)){
+                                listaCompras.add(prodcuto.marca + " " + prodcuto.descripcion)
+                            }
                         }
                     }
                 }
             }else{
-
+                Text("Compras Realizadas")
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ){
+                   items(listaCompras){
+                       nombre-> Text(nombre)
+                   }
+                }
             }
 
         }
